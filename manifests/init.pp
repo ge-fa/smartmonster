@@ -22,4 +22,11 @@ class smartmonster {
     mode   => '0755',
     source => 'puppet:///modules/smartmonster/99_smartmonster_sleep.d.sh',
   }
+
+  package { 'md5deep':
+    ensure => $operatingsystem ? {
+      'Debian' => installed,
+       default => undef,
+    },
+  }
 }
